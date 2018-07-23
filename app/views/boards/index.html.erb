@@ -11,7 +11,9 @@
                      }
       %>
     <% end %>     
-    <%= link_to '新規作成', new_board_path, class: 'btn btn-outline-dark' %>
+    <% if @current_user %>
+      <%= link_to '新規作成', new_board_path, class: 'btn btn-outline-dark' %>
+    <% end %>
   </div>
 </div>
 <% if flash[:notice] %>
@@ -39,7 +41,11 @@
         <td><%= board.created_at.to_s(:datetime_jp) %></td>
         <td><%= board.updated_at.to_s(:datetime_jp) %></td>
         <td><%= link_to '詳細', board, class: 'btn btn-outline-dark' %></td>
-        <td><%= link_to '削除', board, class: 'btn btn-outline-dark', method: :delete, data: { confirm: "#{board.title}を削除しますか？" } %></td>
+        <td>
+        <% if @current_user && @current_user.name == board.name %>
+          <%= link_to '削除', board, class: 'btn btn-outline-dark', method: :delete, data: { confirm: "#{board.title}を削除しますか？" } %>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
