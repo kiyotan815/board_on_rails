@@ -1,24 +1,37 @@
-# README
+# Board on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 説明
+以下のUdemyの講座を参考に作成しました。  
+https://www.udemy.com/rails-kj/learn/v4/overview  
 
-Things you may want to cover:
+## 使用技術
+* Ruby 2.3.6
+* Ruby on Rails
+* Docker
+* Mysql
+* Bootstrap
+* jQuery
 
-* Ruby version
+## 起動方法
 
-* System dependencies
+**docker imageのビルド**  
+`docker-compose build`  
+  
+**DBの作成**  
+`docker-compose run web bundle exec rails db:create`  
+  
+**migrate**  
+`docker-compose run web bundle exec rails db:migrate`    
+  
+**起動**  
+`docker-compose up`  
+backgroundで起動したい場合は`-d`オプションをつけてください。    
+  
+**アクセス**  
+`localhost:3000`    
+  
 
-* Configuration
+## 起動しないときは
+`tmp/pids/server.pid`  
+を削除してください。  
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
